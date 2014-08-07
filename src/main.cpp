@@ -2024,7 +2024,7 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[1].nValue = 32.3439878234;
+        txNew.vout[0].nValue = 32.3439878234;
         txNew.vout[0].scriptPubKey = CScript() << 0x0 << OP_CHECKSIG; // a privkey for that 'vanity' pubkey would be interesting ;)
         CBlock block;
         block.vtx.push_back(txNew);
@@ -2032,7 +2032,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
         block.nTime    = 1407359899;
-        block.nBits    = 0x1e0ffff0;
+        block.nBits = bnProofOfWorkLimit.GetCompact();
         block.nNonce   = 72849;
 
         if (fTestNet)
