@@ -29,7 +29,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x29852327c7b212a7bf2f6711c4cf1d567dc3eac59fa75ae77092f71d32508728");
+uint256 hashGenesisBlock("0x38aba98ee5b3cecc9620ee63573a3801f5aed13418573d37e3f1cbb8d987db12");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2024,16 +2024,16 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 32.3439878234;
+        txNew.vout[1].nValue = 32.3439878234;
         txNew.vout[0].scriptPubKey = CScript() << 0x0 << OP_CHECKSIG; // a privkey for that 'vanity' pubkey would be interesting ;)
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1407364925;
+        block.nTime    = 1407359899;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 1381019;
+        block.nNonce   = 72849;
 
         if (fTestNet)
         {
